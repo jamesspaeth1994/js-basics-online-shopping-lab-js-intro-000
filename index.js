@@ -14,40 +14,23 @@ function addToCart(item) {
  var item = item;
  var itemAndPrice = { [item]: price };
  cart.push(itemAndPrice);
- console.log(`${item} has been added to your cart.`);
+ console.log(item + " has been returned to your cart.");
  return cart;
 }
 
 function viewCart() {
   // write your code here
-  if (cart.length === 0) {
-    console.log("Your shopping cart is empty.")
-  } else {
-    var message = "In your cart, you have ";
-    var item = cart[0];
-    var itemName = Object.keys(item)[0];
-    var itemPrice = item[itemName];
-    message += `${itemName} at $${itemPrice}`;
-    if (cart.length == 2) {
-      var item2 = cart[1];
-      var itemName2 = Object.keys(item2)[0];
-      var itemPrice2 = item2[itemName2];
-      message += ` and ${itemName2} at $${itemPrice2}`;
-    } else if (cart.length >= 3) {
-      for (let i = 1; i < cart.length; i++) {
-        var varItem = cart[i];
-        var varItemName = Object.keys(varItem)[0];
-        var varItemPrice = varItem[varItemName];
-        message += `, ${varItemName} at $${varItemPrice}`;
-      }
-      var lastItem = cart[cart.length - 1];
-      var lastItemName = Object.keys(lastItem)[0];
-      var lastItemPrice = lastItem[lastItemName];
-      message += `, and ${lastItemName} at $${lastItemPrice}`;
+  if (cart.length > 0) {
+    var list = [];
+    for (var i = 0; i < cart.length; i++) {
+      var myItems = Object.keys(cart[i]);
+      list.push( " " + myItems + " at $" + cart[i][myItems] );
     }
-  message += '.';
-  console.log(message);
-  }
+  console.log("In your cart, you have" + list + ".");
+} else {
+  console.log("Your shopping cart is empty.");
+}
+
 }
 
 function total() {
